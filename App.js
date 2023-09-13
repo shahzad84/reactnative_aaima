@@ -7,8 +7,9 @@ import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "./src/login"
-import Signup from "./src/signup"
+import Login from "./src/login";
+import Signup from "./src/signup";
+import Card from "./src/card";
 const Stack = createStackNavigator();
 export default function App() {
   return (
@@ -17,8 +18,10 @@ export default function App() {
         {/* <Stack.Screen name="Header" component={Header} /> */}
         {/* <Stack.Screen name="Button" component={Buttons} /> */}
         {/* <Stack.Screen name="Login" component={Login} /> */}
-        <Stack.Screen name="Signup" component={Signup} />
-      </Stack.Navigator>/
+        {/* <Stack.Screen name="Signup" component={Signup} /> */}
+        <Stack.Screen name="Card" component={Card} />
+      </Stack.Navigator>
+      /
     </NavigationContainer>
     // <PaperProvider>
     //   {/* <Header /> */}
