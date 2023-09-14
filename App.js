@@ -1,40 +1,28 @@
-import { StyleSheet } from "react-native";
-import Header from "./src/header";
-import Buttons from "./src/button";
 import * as React from "react";
-import { PaperProvider } from "react-native-paper";
-import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Login from "./src/login";
 import Signup from "./src/signup";
-import Card from "./src/card";
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+import { nanoid } from "nanoid";
+import "react-native-url-polyfill/auto";
+import "react-native-get-random-values";
+const ScreenA = () => {
+  const uniqueKey = nanoid();
+  return <Login key={uniqueKey} />;
+};
+
+const ScreenB = () => {
+  const uniqueKey = nanoid();
+  return <Signup key={uniqueKey} />;
+};
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Header">
-        {/* <Stack.Screen name="Header" component={Header} /> */}
-        {/* <Stack.Screen name="Button" component={Buttons} /> */}
-        {/* <Stack.Screen name="Login" component={Login} /> */}
-        {/* <Stack.Screen name="Signup" component={Signup} /> */}
-        <Stack.Screen name="Card" component={Card} />
-      </Stack.Navigator>
-      /
+      <Drawer.Navigator initialRouteName="Login">
+        <Drawer.Screen name="Login" component={ScreenA} />
+        <Drawer.Screen name="Signup" component={ScreenB} />
+      </Drawer.Navigator>
     </NavigationContainer>
-    // <PaperProvider>
-    //   {/* <Header /> */}
-    //   <Buttons />
-    // </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
